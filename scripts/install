@@ -1,0 +1,112 @@
+#!/bin/bash
+
+#=================================================
+# GENERIC START
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
+source _common.sh
+source /usr/share/yunohost/helpers
+
+#=================================================
+# STANDARD MODIFICATIONS
+#=================================================
+# FIND AND OPEN A PORT
+#=================================================
+#REMOVEME? ynh_script_progression --message="Finding an available port..." --weight=1
+
+# Find an available port
+#REMOVEME? port=$(ynh_find_port --port=3000)
+#REMOVEME? port_graph=$(ynh_find_port --port=3030)
+#REMOVEME? port_export=$(ynh_find_port --port=3060)
+#REMOVEME? ynh_app_setting_set --app=$app --key=port --value=$port
+#REMOVEME? ynh_app_setting_set --app=$app --key=port_graph --value=$port_graph
+#REMOVEME? ynh_app_setting_set --app=$app --key=port_export --value=$port_export
+
+#=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression --message="Installing dependencies..." --weight=1
+
+ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
+ynh_exec_warn_less ynh_install_mongo --mongo_version=$mongo_version
+
+#=================================================
+# CREATE A MONGODB DATABASE
+#=================================================
+ynh_script_progression --message="Creating a MongoDB database..." --weight=5
+
+db_name=$(ynh_sanitize_dbid --db_name=$app)
+db_user=$db_name
+ynh_app_setting_set --app=$app --key=db_name --value=$db_name
+ynh_mongo_setup_db --db_user=$db_user --db_name=$db_name
+
+#=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
+ynh_script_progression --message="Setting up source files..." --weight=1
+
+# Download, check integrity, uncompress and patch the source from app.src
+ynh_setup_source --dest_dir="$install_dir"
+
+chmod -R o-rwx "$install_dir"
+chown -R $app:www-data "$install_dir"
+
+#=================================================
+# NGINX CONFIGURATION
+#=================================================
+ynh_script_progression --message="Configuring NGINX web server..." --weight=1
+
+# Create a dedicated NGINX config
+ynh_add_nginx_config
+
+#=================================================
+# ADD A CONFIGURATION
+#=================================================
+ynh_script_progression --message="Adding a configuration file..." --weight=1
+
+ynh_add_config --template="../conf/stylo.env" --destination="$install_dir/stylo.env"
+
+chmod 400 "$install_dir/stylo.env"
+chown $app:$app "$install_dir/stylo.env"
+
+#==============================================
+# INSTALL STYLO
+#==============================================
+ynh_script_progression --message="Building $app... (this will take some time and resources!)" --weight=29
+
+pushd $install_dir
+	ynh_use_nodejs
+	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH npm install
+	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH npm clean-install
+popd
+
+#=================================================
+# SETUP SYSTEMD
+#=================================================
+ynh_script_progression --message="Configuring a systemd service..." --weight=1
+
+# Create a dedicated systemd config
+ynh_add_systemd_config
+
+#=================================================
+# INTEGRATE SERVICE IN YUNOHOST
+#=================================================
+ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
+
+yunohost service add $app --description="A short description of the app" --log="/var/log/$app/$app.log"
+
+#=================================================
+# START SYSTEMD SERVICE
+#=================================================
+ynh_script_progression --message="Starting a systemd service..." --weight=1
+
+# Start a systemd service
+ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_script_progression --message="Installation of $app completed" --last

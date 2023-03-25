@@ -1,0 +1,51 @@
+{
+    "name": "Stylo",
+    "id": "stylo",
+    "packaging_format": 1,
+    "description": {
+        "en": "Explain in *a few (10~15) words* the purpose of the app or what it actually does (it is meant to give a rough idea to users browsing a catalog of 100+ apps)",
+        "fr": "Expliquez en *quelques* (10~15) mots l'utilité de l'app ou ce qu'elle fait (l'objectif est de donner une idée grossière pour des utilisateurs qui naviguent dans un catalogue de 100+ apps)"
+    },
+    "version": "1.7.12~ynh1",
+    "url": "https://stylo.huma-num.fr/",
+    "upstream": {
+        "license": "GPL-3.0",
+        "website": "https://example.com",
+        "demo": "https://demo.example.com",
+        "admindoc": "https://yunohost.org/packaging_apps",
+        "userdoc": "https://stylo-doc.ecrituresnumeriques.ca/fr_FR/#!index.md",
+        "code": "https://github.com/EcrituresNumeriques/stylo/"
+    },
+    "license": "GPL-3.0",
+    "maintainer": {
+        "name": "John doe",
+        "email": "john.doe@example.com"
+    },
+    "requirements": {
+        "yunohost": ">= 11.0.9"
+    },
+    "multi_instance": true,
+    "services": [
+        "nginx",
+        "mysql"
+    ],
+    "arguments": {
+        "install": [
+            {
+                "name": "domain",
+                "type": "domain"
+            },
+            {
+                "name": "path",
+                "type": "path",
+                "example": "/stylo",
+                "default": "/stylo"
+            },
+            {
+                "name": "is_public",
+                "type": "boolean",
+                "default": true
+            }
+        ]
+    }
+}
