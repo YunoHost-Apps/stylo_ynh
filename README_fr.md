@@ -27,9 +27,9 @@ Some long and extensive description of what the app is and does, lorem ipsum dol
 - Excepteur sint occaecat cupidatat non proident, sunt in culpa."
 
 
-**Version incluse :** 1.7.12~ynh1
+**Version incluse :** 2.0.0~ynh1
 
-**Démo :** https://demo.example.com
+**Démo :** https://stylo.huma-num.fr/
 
 ## Captures d’écran
 
@@ -52,9 +52,9 @@ Some long and extensive description of what the app is and does, lorem ipsum dol
 
 ## Documentations et ressources
 
-* Site officiel de l’app : <https://example.com>
+* Site officiel de l’app : <https://stylo.huma-num.fr/>
 * Documentation officielle utilisateur : <https://stylo-doc.ecrituresnumeriques.ca/fr_FR/#!index.md>
-* Documentation officielle de l’admin : <https://yunohost.org/packaging_apps>
+* Documentation officielle de l’admin : <https://github.com/EcrituresNumeriques/stylo/blob/master/HOWTO.md>
 * Dépôt de code officiel de l’app : <https://github.com/EcrituresNumeriques/stylo/>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_stylo>
 * Signaler un bug : <https://github.com/YunoHost-Apps/stylo_ynh/issues>
