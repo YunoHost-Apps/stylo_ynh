@@ -16,15 +16,16 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 ## Vue d’ensemble
 
-Some long and extensive description of what the app is and does, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Stylo est un éditeur de textes pour articles scientifiques en sciences humaines et sociales.
 
 ### Features
 
-- Ut enim ad minim veniam, quis nostrud exercitation ullamco ;
-- Laboris nisi ut aliquip ex ea commodo consequat ;
-- Duis aute irure dolor in reprehenderit in voluptate ;
-- Velit esse cillum dolore eu fugiat nulla pariatur ;
-- Excepteur sint occaecat cupidatat non proident, sunt in culpa."
+- un éditeur de métadonnées
+- un versionnage
+- une gestion de la bibliographie
+- différents formats exports : html5, xml (TEI, Erudit), pdf...
+- l'annotation
+- le partage de document
 
 
 **Version incluse :** 2.0.0~ynh1
