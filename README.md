@@ -16,7 +16,16 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 ## Overview
 
-Explain in *a few (10~15) words* the purpose of the app or what it actually does (it is meant to give a rough idea to users browsing a catalog of 100+ apps)
+Stylo is a text editor for scientific articles in the humanities and social sciences.
+
+### Features
+
+- a metadata editor
+- versioning
+- bibliography management
+- different export formats: html5, xml (TEI, Erudit), pdf...
+- the annotation
+- document sharing
 
 **Shipped version:** 2.0.0~ynh1
 
