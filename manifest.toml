@@ -45,6 +45,9 @@ ram.runtime = "50M"
         sha256 = "1eaef65e0efe79fcabadd9e88b8ba1b80fdc1ee37d2b405f3ffe33877fe9b2a1"
 
     [resources.ports]
+    main.default = 3000
+    graph.default = 3030
+    export.default = 3060
 
     [resources.system_user]
 
