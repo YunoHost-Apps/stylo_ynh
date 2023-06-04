@@ -27,7 +27,7 @@ Stylo is a text editor for scientific articles in the humanities and social scie
 - the annotation
 - document sharing
 
-**Shipped version:** 2.0.0~ynh1
+**Shipped version:** 2.0.19~ynh1
 
 **Demo:** https://stylo.huma-num.fr/
 

@@ -28,7 +28,7 @@ Stylo est un éditeur de textes pour articles scientifiques en sciences humaines
 - le partage de document
 
 
-**Version incluse :** 2.0.0~ynh1
+**Version incluse :** 2.0.19~ynh1
 
 **Démo :** https://stylo.huma-num.fr/
 
