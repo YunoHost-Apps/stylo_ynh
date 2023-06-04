@@ -5,7 +5,7 @@ name = "Stylo"
 description.en = "Text editor for scientific articles in the humanities and social sciences"
 description.fr = "Éditeur de textes pour articles scientifiques en sciences humaines et sociales"
 
-version = "2.0.0~ynh1"
+version = "2.0.19~ynh1"
 
 maintainers = ["eric_G"]
 
@@ -18,7 +18,7 @@ userdoc = "https://stylo-doc.ecrituresnumeriques.ca/fr_FR/#!index.md"
 code = "https://github.com/EcrituresNumeriques/stylo/"
 
 [integration]
-yunohost = ">= 11.1.15"
+yunohost = ">= 11.1.19"
 architectures = "all"
 multi_instance = true
 ldap = false
@@ -37,8 +37,8 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/EcrituresNumeriques/stylo/archive/refs/tags/v2.0.0.tar.gz"
-        sha256 = "1eaef65e0efe79fcabadd9e88b8ba1b80fdc1ee37d2b405f3ffe33877fe9b2a1"
+        url = "https://github.com/EcrituresNumeriques/stylo/archive/refs/tags/v2.0.19.tar.gz"
+        sha256 = "77d797a470d420b8548ab034f01f2d5af770abf03d086762ac15c90a8aca4ebd"
 
     [resources.ports]
     main.default = 3000
@@ -54,3 +54,4 @@ ram.runtime = "50M"
 
     [resources.apt]
     packages = "pandoc"
+    
