@@ -7,9 +7,10 @@ Type=simple
 User=__APP__
 Group=__APP__
 Environment=NODE_ENV=production
+Environment=DOTENV_CONFIG_PATH=stylo.env
 WorkingDirectory=__INSTALL_DIR__/
 Environment="__YNH_NODE_LOAD_PATH__"
-ExecStart=__YNH_NODE__ start
+ExecStart=__YNH_NODE__ -r dotenv/config __INSTALL_DIR__/node_modules/.bin/concurrently 'npm:start:*'
 Restart=on-failure
 RestartSec=5
 StartLimitInterval=60s

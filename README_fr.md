@@ -16,45 +16,31 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 ## Vue d’ensemble
 
-Some long and extensive description of what the app is and does, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Stylo est un éditeur de textes pour articles scientifiques en sciences humaines et sociales.
 
 ### Features
 
-- Ut enim ad minim veniam, quis nostrud exercitation ullamco ;
-- Laboris nisi ut aliquip ex ea commodo consequat ;
-- Duis aute irure dolor in reprehenderit in voluptate ;
-- Velit esse cillum dolore eu fugiat nulla pariatur ;
-- Excepteur sint occaecat cupidatat non proident, sunt in culpa."
+- un éditeur de métadonnées
+- un versionnage
+- une gestion de la bibliographie
+- différents formats exports : html5, xml (TEI, Erudit), pdf...
+- l'annotation
+- le partage de document
 
 
-**Version incluse :** 1.7.12~ynh1
+**Version incluse :** 2.0.19~ynh1
 
-**Démo :** https://demo.example.com
+**Démo :** https://stylo.huma-num.fr/
 
 ## Captures d’écran
 
 ![Capture d’écran de Stylo](./doc/screenshots/example.jpg)
 
-## Avertissements / informations importantes
-
-* Any known limitations, constrains or stuff not working, such as (but not limited to):
-    * requiring a full dedicated domain ?
-    * architectures not supported ?
-    * not-working single-sign on or LDAP integration ?
-    * the app requires an important amount of RAM / disk / .. to install or to work properly
-    * etc...
-
-* Other infos that people should be aware of, such as:
-    * any specific step to perform after installing (such as manually finishing the install, specific admin credentials, ...)
-    * how to configure / administrate the application if it ain't obvious
-    * upgrade process / specificities / things to be aware of ?
-    * security considerations ?
-
 ## Documentations et ressources
 
-* Site officiel de l’app : <https://example.com>
+* Site officiel de l’app : <https://stylo.huma-num.fr/>
 * Documentation officielle utilisateur : <https://stylo-doc.ecrituresnumeriques.ca/fr_FR/#!index.md>
-* Documentation officielle de l’admin : <https://yunohost.org/packaging_apps>
+* Documentation officielle de l’admin : <https://github.com/EcrituresNumeriques/stylo/blob/master/HOWTO.md>
 * Dépôt de code officiel de l’app : <https://github.com/EcrituresNumeriques/stylo/>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_stylo>
 * Signaler un bug : <https://github.com/YunoHost-Apps/stylo_ynh/issues>
