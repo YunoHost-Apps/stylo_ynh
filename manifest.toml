@@ -18,7 +18,7 @@ userdoc = "https://stylo-doc.ecrituresnumeriques.ca/fr_FR/#!index.md"
 code = "https://github.com/EcrituresNumeriques/stylo/"
 
 [integration]
-yunohost = ">= 11.1.29"
+yunohost = ">= 11.2.29"
 architectures = "all"
 multi_instance = true
 ldap = false
@@ -54,4 +54,3 @@ ram.runtime = "50M"
 
     [resources.apt]
     packages = "pandoc"
-    
