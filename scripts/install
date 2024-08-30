@@ -55,8 +55,10 @@ ynh_script_progression --message="Building $app... (this will take some time and
 
 pushd $install_dir
 	ynh_use_nodejs
-	#ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH npm install
-	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH npm clean-install
+	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm clean-install
+	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm  --prefix front clean-install
+	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm  --prefix export clean-install
+	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm  --prefix graphql clean-install
 popd
 
 #=================================================
