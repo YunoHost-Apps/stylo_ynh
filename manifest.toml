@@ -2,18 +2,18 @@ packaging_format = 2
 
 id = "stylo"
 name = "Stylo"
-description.en = "Explain in *a few (10~15) words* the purpose of the app or what it actually does (it is meant to give a rough idea to users browsing a catalog of 100+ apps)"
-description.fr = "Expliquez en *quelques* (10~15) mots l'utilité de l'app ou ce qu'elle fait (l'objectif est de donner une idée grossière pour des utilisateurs qui naviguent dans un catalogue de 100+ apps)"
+description.en = "Text editor for scientific articles in the humanities and social sciences"
+description.fr = "Éditeur de textes pour articles scientifiques en sciences humaines et sociales"
 
-version = "1.7.12~ynh1"
+version = "3.0.6~ynh1"
 
-maintainers = ["John doe"]
+maintainers = [ ]
 
 [upstream]
 license = "GPL-3.0"
-website = "https://example.com"
-demo = "https://demo.example.com"
-admindoc = "https://yunohost.org/packaging_apps"
+website = "https://stylo.huma-num.fr/"
+demo = "https://stylo.huma-num.fr/"
+admindoc = "https://github.com/EcrituresNumeriques/stylo/blob/master/HOWTO.md"
 userdoc = "https://stylo-doc.ecrituresnumeriques.ca/fr_FR/#!index.md"
 code = "https://github.com/EcrituresNumeriques/stylo/"
 
@@ -31,20 +31,19 @@ ram.runtime = "50M"
     [install.domain]
     type = "domain"
 
-    [install.path]
-    type = "path"
-    default = "/stylo"
-
     [install.init_main_permission]
     type = "group"
     default = "visitors"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/EcrituresNumeriques/stylo/archive/refs/tags/v2.0.0.tar.gz"
-        sha256 = "1eaef65e0efe79fcabadd9e88b8ba1b80fdc1ee37d2b405f3ffe33877fe9b2a1"
+        url = "https://github.com/EcrituresNumeriques/stylo/archive/refs/tags/v3.0.6.tar.gz"
+        sha256 = "255c7d6152fc33c250c61f57206b0a8d762dea3930cbe7d64b4974f1d2caf0a6"
 
     [resources.ports]
+    main.default = 3000
+    graph.default = 3030
+    export.default = 3060
 
     [resources.system_user]
 

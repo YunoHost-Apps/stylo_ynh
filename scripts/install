@@ -10,21 +10,6 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# STANDARD MODIFICATIONS
-#=================================================
-# FIND AND OPEN A PORT
-#=================================================
-#REMOVEME? ynh_script_progression --message="Finding an available port..." --weight=1
-
-# Find an available port
-#REMOVEME? port=$(ynh_find_port --port=3000)
-#REMOVEME? port_graph=$(ynh_find_port --port=3030)
-#REMOVEME? port_export=$(ynh_find_port --port=3060)
-#REMOVEME? ynh_app_setting_set --app=$app --key=port --value=$port
-#REMOVEME? ynh_app_setting_set --app=$app --key=port_graph --value=$port_graph
-#REMOVEME? ynh_app_setting_set --app=$app --key=port_export --value=$port_export
-
-#=================================================
 # INSTALL DEPENDENCIES
 #=================================================
 ynh_script_progression --message="Installing dependencies..." --weight=1
@@ -54,19 +39,11 @@ chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
 
 #=================================================
-# NGINX CONFIGURATION
-#=================================================
-ynh_script_progression --message="Configuring NGINX web server..." --weight=1
-
-# Create a dedicated NGINX config
-ynh_add_nginx_config
-
-#=================================================
 # ADD A CONFIGURATION
 #=================================================
 ynh_script_progression --message="Adding a configuration file..." --weight=1
 
-ynh_add_config --template="../conf/stylo.env" --destination="$install_dir/stylo.env"
+ynh_add_config --template="stylo.env" --destination="$install_dir/stylo.env"
 
 chmod 400 "$install_dir/stylo.env"
 chown $app:$app "$install_dir/stylo.env"
@@ -78,8 +55,10 @@ ynh_script_progression --message="Building $app... (this will take some time and
 
 pushd $install_dir
 	ynh_use_nodejs
-	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH npm install
-	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH npm clean-install
+	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm clean-install
+	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm  --prefix front clean-install
+	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm  --prefix export clean-install
+	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm  --prefix graphql clean-install
 popd
 
 #=================================================
@@ -87,15 +66,13 @@ popd
 #=================================================
 ynh_script_progression --message="Configuring a systemd service..." --weight=1
 
+# Create a dedicated NGINX config
+ynh_add_nginx_config
+
 # Create a dedicated systemd config
 ynh_add_systemd_config
 
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
-
-yunohost service add $app --description="A short description of the app" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="A short description of the app" --log="systemd"
 
 #=================================================
 # START SYSTEMD SERVICE
